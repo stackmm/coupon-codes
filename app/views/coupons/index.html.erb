@@ -1,0 +1,11 @@
+<%= render partial: "shared/nav" %>
+
+<h2><%= "Coupons:" %></h2>
+<ul>
+  <% @merchant.coupons.each do |coupon| %>
+    <section id="coupon-<%= coupon.id %>">
+      <li><%= link_to coupon.name, "/merchants/#{@merchant.id}/coupons/#{coupon.id}" %></li>
+      <p>value: <%= coupon.value %></p>
+    </section>
+  <% end %>
+</ul>
