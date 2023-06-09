@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "merchant dashboard" do
   before :each do
     @merchant1 = Merchant.create!(name: "Hair Care")
+    @merchant2 = Merchant.create!(name: "Jewelry")
 
     @customer_1 = Customer.create!(first_name: "Joey", last_name: "Smith")
     @customer_2 = Customer.create!(first_name: "Cecilia", last_name: "Jones")
@@ -39,6 +40,15 @@ RSpec.describe "merchant dashboard" do
     @transaction5 = Transaction.create!(credit_card_number: 102938, result: 1, invoice_id: @invoice_6.id)
     @transaction6 = Transaction.create!(credit_card_number: 879799, result: 1, invoice_id: @invoice_7.id)
     @transaction7 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_2.id)
+
+    @coupon_1 = Coupon.create!(name: "Half Off", code: "HALFOFF", value: 0.5, merchant_id: @merchant1.id)
+    @coupon_2 = Coupon.create!(name: "OMG it's FREE!", code: "FULLOFF", value: 1.0, merchant_id: @merchant1.id)
+    @coupon_3 = Coupon.create!(name: "10% Off", code: "TENOFF", value: 0.10, merchant_id: @merchant1.id)
+    @coupon_4 = Coupon.create!(name: "Five Dollars Off!", code: "5OFF", value: 5, merchant_id: @merchant1.id)
+    @coupon_5 = Coupon.create!(name: "Two Dollars Off!", code: "2OFF", value: 2, merchant_id: @merchant1.id)
+    @coupon_6 = Coupon.create!(name: "Ten Dollars Off!", code: "10OFF", value: 10, merchant_id: @merchant2.id)
+    @coupon_7 = Coupon.create!(name: "50% Off!", code: "50%OFF", value: 0.5, merchant_id: @merchant2.id)
+    @coupon_8 = Coupon.create!(name: "Three Bucks Off!", code: "3OFF", value: 3, merchant_id: @merchant2.id)
 
     visit merchant_dashboard_index_path(@merchant1)
   end
@@ -93,6 +103,7 @@ RSpec.describe "merchant dashboard" do
     expect(page).to have_no_content(@customer_6.first_name)
     expect(page).to have_no_content(@customer_6.last_name)
   end
+
   it "can see a section for Items Ready to Ship with list of names of items ordered and ids" do
     within("#items_ready_to_ship") do
 
@@ -118,5 +129,13 @@ RSpec.describe "merchant dashboard" do
 
   it "shows the date that the invoice was created in this format: Monday, July 18, 2019" do
     expect(page).to have_content(@invoice_1.created_at.strftime("%A, %B %-d, %Y"))
+  end
+
+  it "displays a link to view all of the merchant's coupons" do
+    expect(page).to have_link("Coupons")
+    
+    click_link("Coupons")
+    # expect(page).to have_current_path(merchant_coupons_path(@merchant1))
+    expect(page).to have_current_path("/merchants/#{@merchant1.id}/coupons")
   end
 end
