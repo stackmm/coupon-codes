@@ -12,4 +12,17 @@ RSpec.describe Coupon, type: :model do
     it { should belong_to :merchant }
     it { should have_many :invoices }
   end
+
+  describe 'instance methods' do
+    describe '#calculate_discount' do
+      it 'calculates the discount based on the value of the coupon' do
+        coupon_data
+        expect(@coupon_1.calculate_discount(100)).to eq(50)
+        expect(@coupon_2.calculate_discount(100)).to eq(100)
+        expect(@coupon_3.calculate_discount(100)).to eq(10)
+        expect(@coupon_4.calculate_discount(100)).to eq(5)
+        expect(@coupon_5.calculate_discount(100)).to eq(2)
+      end
+    end
+  end
 end
