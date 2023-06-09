@@ -1,3 +1,17 @@
+def coupon_data
+  @merchant1 = Merchant.create!(name: "Hair Care")
+  @merchant2 = Merchant.create!(name: "Jewelry")
+
+  @coupon_1 = Coupon.create!(name: "Half Off", code: "HALFOFF", value: 0.5, merchant_id: @merchant1.id)
+  @coupon_2 = Coupon.create!(name: "OMG it's FREE!", code: "FULLOFF", value: 1.0, merchant_id: @merchant1.id)
+  @coupon_3 = Coupon.create!(name: "10% Off", code: "TENOFF", value: 0.10, merchant_id: @merchant1.id)
+  @coupon_4 = Coupon.create!(name: "Five Dollars Off!", code: "5OFF", value: 5, merchant_id: @merchant1.id)
+  @coupon_5 = Coupon.create!(name: "Two Dollars Off!", code: "2OFF", value: 2, merchant_id: @merchant1.id)
+  @coupon_6 = Coupon.create!(name: "Ten Dollars Off!", code: "10OFF", value: 10, merchant_id: @merchant2.id)
+  @coupon_7 = Coupon.create!(name: "50% Off!", code: "50%OFF", value: 0.5, merchant_id: @merchant2.id)
+  @coupon_8 = Coupon.create!(name: "Three Bucks Off!", code: "3OFF", value: 3, merchant_id: @merchant2.id)
+end
+
 require "simplecov"
 SimpleCov.start
 # This file is copied to spec/ when you run 'rails generate rspec:install'
