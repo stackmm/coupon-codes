@@ -6,5 +6,7 @@ class Coupon < ApplicationRecord
   validates_uniqueness_of :code
   
   belongs_to :merchant
-  has_one :invoice
+  has_many :invoices
+
+  enum status: [:disabled, :enabled]
 end
