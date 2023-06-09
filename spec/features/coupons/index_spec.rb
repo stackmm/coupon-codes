@@ -6,6 +6,7 @@ RSpec.describe "Coupons Index Page", type: :feature do
     visit merchant_coupons_path(@merchant1)
   end
 
+  # User Story 1
   it "displays all of the merchant's coupons names and % off" do
     within("#coupon-#{@coupon_1.id}") do
       expect(page).to have_content(@coupon_1.name)
