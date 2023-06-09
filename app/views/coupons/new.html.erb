@@ -1,0 +1,13 @@
+<%= render partial: "shared/nav" %>
+
+<%= form_with model: @coupon, url: "/merchants/#{@merchant.id}/coupons", local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br/><br/>
+  <%= form.label :code %>
+  <%= form.text_field :code %><br/><br/>
+  <%= form.label :value %>
+  <%= form.text_field :value %><br/><br/>
+  <%= form.label :percent, "Check if Percentage" %>
+  <%= form.check_box :percent %><br/><br/>
+  <%= form.submit "Submit" %>
+<% end %>
