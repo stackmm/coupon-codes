@@ -38,6 +38,6 @@ RSpec.describe "Coupons Index Page", type: :feature do
     expect(page).to have_link("Create New Coupon")
 
     click_link("Create New Coupon")
-    expect(page).to have_current_path("/merchants/#{@merchant1}/coupons/new")
+    expect(page).to have_current_path("/merchants/#{@merchant1.id}/coupons/new")
   end
 end
