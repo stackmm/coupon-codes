@@ -39,4 +39,21 @@ RSpec.describe "Coupon Show Page", type: :feature do
     expect(page).to have_current_path(merchant_coupon_path(@merchant1, @coupon_1))
     expect(page).to have_content("Status: disabled")
   end
+
+  # User Story 5
+  it "has a button to enable the coupon" do
+    click_button("Deactivate")
+    expect(page).to have_content("Status: disabled")
+    expect(page).to have_button("Activate")
+    expect(page).to_not have_button("Deactivate")
+  end
+
+  it "can enable a coupon and return to the show page" do
+    click_button("Deactivate")
+    expect(page).to have_content("Status: disabled")
+
+    click_button("Activate")
+    expect(page).to have_current_path(merchant_coupon_path(@merchant1, @coupon_1))
+    expect(page).to have_content("Status: enabled")
+  end
 end
