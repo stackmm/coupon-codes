@@ -24,5 +24,14 @@ RSpec.describe Coupon, type: :model do
         expect(@coupon_5.calculate_discount(100)).to eq(2)
       end
     end
+
+    describe '#times_used' do
+      it 'returns the number of times the coupon has been used' do
+        coupon_data
+        expect(@coupon_1.times_used).to eq(2)
+        expect(@coupon_2.times_used).to eq(0)
+        expect(@coupon_3.times_used).to eq(1)
+      end
+    end
   end
 end
