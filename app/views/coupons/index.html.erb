@@ -24,7 +24,7 @@
           <p>Inactive Coupons</p>
         </div>
 
-        <section id="disabled">
+        <section id="inactive">
           <% @merchant.inactive_coupons.each do |coupon| %>
             <section id="coupon-<%= coupon.id %>">
               <li><%= link_to coupon.name, "/merchants/#{@merchant.id}/coupons/#{coupon.id}" %>
