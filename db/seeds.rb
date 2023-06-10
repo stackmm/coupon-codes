@@ -22,3 +22,6 @@ Rake::Task["csv_load:all"].invoke
 @coupon_6 = Coupon.create!(name: "Ten Dollars Off!", code: "10OFF", value: 10, merchant_id: 2)
 @coupon_7 = Coupon.create!(name: "50% Off!", code: "50%OFF", value: 0.5, merchant_id: 2)
 @coupon_8 = Coupon.create!(name: "Three Bucks Off!", code: "3OFF", value: 3, merchant_id: 2)
+@coupon_9 = Coupon.create!(name: "Twenty Percent Off!", code: "20%OFF!", value: 0.20, merchant_id: 1, status: 0)
+@coupon_10 = Coupon.create!(name: "The $5 SALE", code: "GIANT5", value: 5, merchant_id: 1, status: 0)
+@coupon_11 = Coupon.create!(name: "The $10 SALE", code: "GIANT10", value: 10, merchant_id: 2, status: 0)
