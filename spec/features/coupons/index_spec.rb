@@ -40,4 +40,28 @@ RSpec.describe "Coupons Index Page", type: :feature do
     click_link("Create New Coupon")
     expect(page).to have_current_path("/merchants/#{@merchant1.id}/coupons/new")
   end
+
+  # User  Story 6
+  it "displays coupons separated between inactive and active" do
+    expect(page).to have_content("Active Coupons")
+    expect(page).to have_content("Inactive Coupons")
+
+    within("#active") do
+      expect(page).to have_content(@coupon_1.name)
+      expect(page).to have_content(@coupon_2.name)
+      expect(page).to have_content(@coupon_3.name)
+      expect(page).to have_content(@coupon_4.name)
+      expect(page).to_not have_content(@coupon_9.name)
+      expect(page).to_not have_content(@coupon_10.name) 
+    end
+
+    within("#inactive") do
+      expect(page).to have_content(@coupon_9.name)
+      expect(page).to have_content(@coupon_10.name)
+      expect(page).to_not have_content(@coupon_1.name)
+      expect(page).to_not have_content(@coupon_2.name)
+      expect(page).to_not have_content(@coupon_3.name)
+      expect(page).to_not have_content(@coupon_4.name)
+    end
+  end
 end
