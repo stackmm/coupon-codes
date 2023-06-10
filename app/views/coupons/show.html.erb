@@ -6,4 +6,8 @@
 <p>Status: <%= @coupon.status %></p>
 <p>Times used: <%= @coupon.times_used %></p><br>
 
-<%= button_to "Deactivate", merchant_coupon_status_path(@merchant, @coupon), method: :patch, params: {status: "disabled"} %>
+<% if @coupon.status == "enabled" %>
+  <%= button_to "Deactivate", merchant_coupon_status_path(@merchant, @coupon), method: :patch, params: {status: "disabled"} %>
+<% else %>
+  <%= button_to "Activate", merchant_coupon_status_path(@merchant, @coupon), method: :patch, params: {status: "enabled"} %>
+<% end %>
