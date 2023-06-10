@@ -17,6 +17,12 @@ RSpec.describe "Coupon Show Page", type: :feature do
   end
 
   it "displays a count of how many times that coupon has been used" do
-    expect(page).to have_content("Times Used: 0")
+    expect(page).to have_content("Times used: 2")
+    
+    visit merchant_coupon_path(@merchant1, @coupon_2)
+    expect(page).to have_content("Times used: 0")
+
+    visit merchant_coupon_path(@merchant1, @coupon_3)
+    expect(page).to have_content("Times used: 1")
   end
 end
