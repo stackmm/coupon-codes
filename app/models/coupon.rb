@@ -17,4 +17,8 @@ class Coupon < ApplicationRecord
       [price, value].min.round(2)
     end
   end
+
+  def times_used
+    invoices.joins(:transactions).where('result = 1', invoices: {coupon_id: self.id}).distinct.count
+  end
 end
