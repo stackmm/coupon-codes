@@ -99,7 +99,7 @@ RSpec.describe "invoices show" do
 
   it "shows a select field to update the invoice status" do
     visit merchant_invoice_path(@merchant1, @invoice_1)
-
+    save_and_open_page
     within("#the-status-#{@ii_1.id}") do
       page.select("cancelled")
       click_button "Update Invoice"
@@ -112,4 +112,24 @@ RSpec.describe "invoices show" do
     end
   end
 
+  # User Story 7
+  it "displays the subtotal (total without coupon discounts)" do
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+    expect(page).to have_content(@invoice_1.subtotal)
+  end
+
+  it "displays the grand total revenue (total with coupon discounts)" do
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+    expect(page).to have_content(@invoice_1.total_revenue)
+  end
+
+  it "displays the name and code of the coupon used and links to the coupon show page" do
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+    expect(page).to have_content(@coupon_3.name)
+    expect(page).to have_content(@coupon_3.code)
+    expect(page).to have_link(@coupon_3.name, href: merchant_coupon_path(@merchant1, @coupon_3))
+
+    click_link(@coupon_3.name)
+    expect(page).to have_current_path(merchant_coupon_path(@merchant1, @coupon_3))
+  end
 end
