@@ -14,4 +14,12 @@ class Invoice < ApplicationRecord
   def total_revenue
     invoice_items.sum("unit_price * quantity")
   end
+
+  def total_revenue_with_discount
+    if coupon
+      total_revenue - coupon.calculate_discount(total_revenue)
+    else
+      total_revenue
+    end
+  end
 end
