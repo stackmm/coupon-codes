@@ -7,7 +7,7 @@ describe "Admin Invoices Index Page" do
     @c1 = Customer.create!(first_name: "Yo", last_name: "Yoz", address: "123 Heyyo", city: "Whoville", state: "CO", zip: 12345)
     @c2 = Customer.create!(first_name: "Hey", last_name: "Heyz")
 
-    @coupon_1 = Coupon.create!(name: "Half Off", code: "HALFOFF", value: 0.5, discount_type: "percent-off", merchant_id: @m1.id)
+    @coupon_1 = Coupon.create!(name: "Half Off", code: "HALFOFF", value: 50, discount_type: "percent-off", merchant_id: @m1.id)
 
     @i1 = Invoice.create!(customer_id: @c1.id, status: 2, created_at: "2012-03-25 09:54:09", coupon_id: @coupon_1.id)
     @i2 = Invoice.create!(customer_id: @c2.id, status: 1, created_at: "2012-03-25 09:30:09")

@@ -13,7 +13,7 @@ class Coupon < ApplicationRecord
 
   def calculate_discount(price)
     if discount_type == "percent-off"
-      (price * value).round(2)
+      (price * (value / 100)).round(2)
     else
       [price, value].min.round(2)
     end
@@ -25,7 +25,7 @@ class Coupon < ApplicationRecord
 
   def display_value
     if discount_type == "percent-off"
-      "#{(value * 100).round}%"
+      "#{value.round}%"
     else
       "$#{value.round}"
     end
