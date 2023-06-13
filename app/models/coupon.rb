@@ -1,7 +1,8 @@
 class Coupon < ApplicationRecord
   validates_presence_of :name,
                         :code,
-                        :value
+                        :value,
+                        :discount_type
   
   validates_uniqueness_of :code
   
