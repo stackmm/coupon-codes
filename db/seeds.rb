@@ -25,3 +25,5 @@ Rake::Task["csv_load:all"].invoke
 @coupon_9 = Coupon.create!(name: "Twenty Percent Off!", code: "20%OFF!", value: 20, discount_type: "percent-off", merchant_id: 1, status: 0)
 @coupon_10 = Coupon.create!(name: "The $5 SALE", code: "GIANT5", value: 5, discount_type: "dollars-off", merchant_id: 1, status: 0)
 @coupon_11 = Coupon.create!(name: "The $10 SALE", code: "GIANT10", value: 10, discount_type: "dollars-off", merchant_id: 2, status: 0)
+
+Invoice.find(29).update(coupon_id: @coupon_1.id)
