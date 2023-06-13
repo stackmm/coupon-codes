@@ -5,7 +5,9 @@ class HolidayService
     NagerService.new
   end
 
-  def new_three_holidays
-    holidays = service.get_holidays.first(3)
+  def next_three_holidays
+    service.get_holidays.map do |holiday_data|
+      Holiday.new(holiday_data)
+    end
   end
 end

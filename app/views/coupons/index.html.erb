@@ -5,7 +5,7 @@
     <h3>Upcoming Holidays</h3>
     <ul>
       <% @holidays.each do |holiday| %>
-        <li><b><%= holiday[:name] %></b>: <%= holiday[:date] %></li>
+        <li><b><%= holiday.name %></b>: <%= holiday.date %></li>
       <% end %>
     </ul><br>
   </section>

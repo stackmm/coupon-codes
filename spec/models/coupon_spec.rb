@@ -22,6 +22,7 @@ RSpec.describe Coupon, type: :model do
         expect(@coupon_3.calculate_discount(100)).to eq(10)
         expect(@coupon_4.calculate_discount(100)).to eq(5)
         expect(@coupon_5.calculate_discount(100)).to eq(2)
+        expect(@coupon_12.calculate_discount(100)).to eq(100)
       end
     end
 

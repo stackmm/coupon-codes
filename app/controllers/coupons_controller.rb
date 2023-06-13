@@ -1,8 +1,7 @@
 class CouponsController < ApplicationController
   def index
     @merchant = Merchant.find(params[:merchant_id])
-    holiday = HolidayService.new
-    @holidays = holiday.new_three_holidays
+    @holidays = HolidayService.new.next_three_holidays.first(3)
   end
 
   def show
@@ -34,7 +33,6 @@ class CouponsController < ApplicationController
 
   private
   def coupon_params
-    value = params[:percent] == "1" ? params[:value].to_f / 100 : params[:value].to_f
-    params.permit(:name, :code, :merchant_id).merge(value: value)
+    params.permit(:name, :code, :value, :discount_type, :merchant_id)
   end
 end
