@@ -20,6 +20,7 @@ def coupon_data
   @coupon_9 = Coupon.create!(name: "Twenty Percent Off!", code: "20%OFF!", value: 0.20, discount_type: "percent-off", merchant_id: @merchant1.id, status: 0)
   @coupon_10 = Coupon.create!(name: "The $5 SALE", code: "GIANT5", value: 5, discount_type: "dollars-off", merchant_id: @merchant1.id, status: 0)
   @coupon_11 = Coupon.create!(name: "The $10 SALE", code: "GIANT10", value: 10, discount_type: "dollars-off", merchant_id: @merchant2.id, status: 0)
+  @coupon_12 = Coupon.create!(name: "The AMAZING SALE", code: "AMZ1NG", value: 120, discount_type: "dollars-off", merchant_id: @merchant2.id, status: 0)
 
   @invoice_1 = Invoice.create!(customer_id: @customer_1.id, status: 2, coupon_id: @coupon_3.id)
   @invoice_2 = Invoice.create!(customer_id: @customer_1.id, status: 2)
