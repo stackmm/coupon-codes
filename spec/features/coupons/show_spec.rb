@@ -56,4 +56,15 @@ RSpec.describe "Coupon Show Page", type: :feature do
     expect(page).to have_current_path(merchant_coupon_path(@merchant1, @coupon_1))
     expect(page).to have_content("Status: enabled")
   end
+
+  it "can't enable a coupon when merchant already has five active coupons" do
+    visit merchant_coupon_path(@merchant1, @coupon_9)
+    click_button("Activate")
+
+    visit merchant_coupon_path(@merchant1, @coupon_10)
+    click_button("Activate")
+
+    visit merchant_coupons_path(@merchant1)
+    expect(page).to have_content("You cannot have more than 5 active coupons at a time.")
+  end
 end
