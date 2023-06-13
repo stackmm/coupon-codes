@@ -3,7 +3,8 @@ class CouponStatusController < ApplicationController
     @merchant = Merchant.find(params[:merchant_id])
     @coupon = Coupon.find(params[:id])
 
-    if @merchant.too_many_active_coupons?
+    if params[:status] == "enabled" && @merchant.too_many_active_coupons?
+      redirect_to merchant_coupon_path(@merchant, @coupon)
       flash[:notice] = "You cannot have more than 5 active coupons at a time."
     else
       @coupon.update(coupon_status_params)
