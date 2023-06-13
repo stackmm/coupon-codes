@@ -10,7 +10,7 @@ RSpec.describe "Coupon Show Page", type: :feature do
   it "displays the coupon's name, code, value and status" do
     expect(page).to have_content(@coupon_1.name)
     expect(page).to have_content(@coupon_1.code)
-    expect(page).to have_content(@coupon_1.value)
+    expect(page).to have_content(@coupon_1.display_value)
     expect(page).to have_content(@coupon_1.status)
 
     expect(page).to_not have_content(@coupon_2.name)

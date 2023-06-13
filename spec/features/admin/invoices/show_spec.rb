@@ -72,6 +72,7 @@ describe "Admin Invoices Index Page" do
     end
   end
 
+  # User Story 8
   it "displays the name and code of any coupon used on an invoice" do
     expect(page).to have_content(@coupon_1.name)
     expect(page).to have_content(@coupon_1.code)
