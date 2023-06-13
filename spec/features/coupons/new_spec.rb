@@ -11,7 +11,7 @@ RSpec.describe "New Coupon Page", type: :feature do
     fill_in "Name", with: "The BIG Sale"
     fill_in "Code", with: "BIGSALEWOW"
     fill_in "Value", with: 25
-    check "percent"
+    select "percent-off", from: "Discount Type"
     click_button "Submit"
 
     expect(page).to have_current_path(merchant_coupons_path(@merchant1))
@@ -25,7 +25,7 @@ RSpec.describe "New Coupon Page", type: :feature do
   it "displays a flash message if all fields are not completed" do
     fill_in "Code", with: "BIGSALEWOW"
     fill_in "Value", with: 25
-    check "percent"
+    select "percent-off", from: "Discount Type"
     click_button "Submit"
 
     expect(page).to have_current_path(new_merchant_coupon_path(@merchant1))
@@ -36,7 +36,7 @@ RSpec.describe "New Coupon Page", type: :feature do
     fill_in "Name", with: "The BIG Sale"
     fill_in "Code", with: "HALFOFF"
     fill_in "Value", with: 25
-    check "percent"
+    select "percent-off", from: "Discount Type"
     click_button "Submit"
 
     expect(page).to have_current_path(new_merchant_coupon_path(@merchant1))
@@ -47,7 +47,7 @@ RSpec.describe "New Coupon Page", type: :feature do
     fill_in "Name", with: "The BIG Sale"
     fill_in "Code", with: "BIGSALEWOW"
     fill_in "Value", with: 25
-    check "percent"
+    select "percent-off", from: "Discount Type"
     click_button "Submit"
 
     visit new_merchant_coupon_path(@merchant1)
@@ -55,6 +55,7 @@ RSpec.describe "New Coupon Page", type: :feature do
     fill_in "Name", with: "Thanksgiving SALE"
     fill_in "Code", with: "TENDOLLARS"
     fill_in "Value", with: 10
+    select "dollars-off", from: "Discount Type"
     click_button "Submit"
 
     expect(page).to have_current_path(merchant_coupons_path(@merchant1))

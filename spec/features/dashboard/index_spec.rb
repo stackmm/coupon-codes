@@ -41,14 +41,14 @@ RSpec.describe "merchant dashboard" do
     @transaction6 = Transaction.create!(credit_card_number: 879799, result: 1, invoice_id: @invoice_7.id)
     @transaction7 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_2.id)
 
-    @coupon_1 = Coupon.create!(name: "Half Off", code: "HALFOFF", value: 0.5, merchant_id: @merchant1.id)
-    @coupon_2 = Coupon.create!(name: "OMG it's FREE!", code: "FULLOFF", value: 1.0, merchant_id: @merchant1.id)
-    @coupon_3 = Coupon.create!(name: "10% Off", code: "TENOFF", value: 0.10, merchant_id: @merchant1.id)
-    @coupon_4 = Coupon.create!(name: "Five Dollars Off!", code: "5OFF", value: 5, merchant_id: @merchant1.id)
-    @coupon_5 = Coupon.create!(name: "Two Dollars Off!", code: "2OFF", value: 2, merchant_id: @merchant1.id)
-    @coupon_6 = Coupon.create!(name: "Ten Dollars Off!", code: "10OFF", value: 10, merchant_id: @merchant2.id)
-    @coupon_7 = Coupon.create!(name: "50% Off!", code: "50%OFF", value: 0.5, merchant_id: @merchant2.id)
-    @coupon_8 = Coupon.create!(name: "Three Bucks Off!", code: "3OFF", value: 3, merchant_id: @merchant2.id)
+    @coupon_1 = Coupon.create!(name: "Half Off", code: "HALFOFF", value: 0.5, discount_type: "percent-off", merchant_id: @merchant1.id)
+    @coupon_2 = Coupon.create!(name: "OMG it's FREE!", code: "FULLOFF", value: 1.0, discount_type: "percent-off", merchant_id: @merchant1.id)
+    @coupon_3 = Coupon.create!(name: "10% Off", code: "TENOFF", value: 0.10, discount_type: "percent-off", merchant_id: @merchant1.id)
+    @coupon_4 = Coupon.create!(name: "Five Dollars Off!", code: "5OFF", value: 5, discount_type: "dollars-off", merchant_id: @merchant1.id)
+    @coupon_5 = Coupon.create!(name: "Two Dollars Off!", code: "2OFF", value: 2, discount_type: "dollars-off", merchant_id: @merchant1.id)
+    @coupon_6 = Coupon.create!(name: "Ten Dollars Off!", code: "10OFF", value: 10, discount_type: "dollars-off", merchant_id: @merchant2.id)
+    @coupon_7 = Coupon.create!(name: "50% Off!", code: "50%OFF", value: 0.5, discount_type: "percent-off", merchant_id: @merchant2.id)
+    @coupon_8 = Coupon.create!(name: "Three Bucks Off!", code: "3OFF", value: 3, discount_type: "dollars-off", merchant_id: @merchant2.id)
 
     visit merchant_dashboard_index_path(@merchant1)
   end

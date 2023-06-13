@@ -11,8 +11,16 @@ class Coupon < ApplicationRecord
 
   enum status: [:disabled, :enabled]
 
+  # def calculate_discount(price)
+  #   if value <= 1.0 # a value <= 1.0 respresents a percentage off (max discount = 100%)
+  #     (price * value).round(2)
+  #   else
+  #     [price, value].min.round(2)
+  #   end
+  # end
+
   def calculate_discount(price)
-    if value <= 1.0 # a value <= 1.0 respresents a percentage off (max discount = 100%)
+    if discount_type == "percent-off"
       (price * value).round(2)
     else
       [price, value].min.round(2)

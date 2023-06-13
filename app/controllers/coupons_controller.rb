@@ -34,7 +34,6 @@ class CouponsController < ApplicationController
 
   private
   def coupon_params
-    value = params[:percent] == "1" ? params[:value].to_f / 100 : params[:value].to_f
-    params.permit(:name, :code, :merchant_id).merge(value: value)
+    params.permit(:name, :code, :value, :discount_type, :merchant_id)
   end
 end
