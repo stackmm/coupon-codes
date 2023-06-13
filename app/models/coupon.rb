@@ -13,7 +13,7 @@ class Coupon < ApplicationRecord
 
   def calculate_discount(price)
     if discount_type == "percent-off"
-      (price * value).round(2)
+      (price * (value / 100)).round(2)
     else
       [price, value].min.round(2)
     end
@@ -21,5 +21,13 @@ class Coupon < ApplicationRecord
 
   def times_used
     invoices.joins(:transactions).where('result = 1', invoices: {coupon_id: self.id}).distinct.count
+  end
+
+  def display_value
+    if discount_type == "percent-off"
+      "#{value.round}%"
+    else
+      "$#{value.round}"
+    end
   end
 end

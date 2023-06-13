@@ -10,16 +10,16 @@ RSpec.describe "Coupons Index Page", type: :feature do
   it "displays all of the merchant's coupons names and % off" do
     within("#coupon-#{@coupon_1.id}") do
       expect(page).to have_content(@coupon_1.name)
-      expect(page).to have_content(@coupon_1.value)
+      expect(page).to have_content(@coupon_1.display_value)
     end
 
     within("#coupon-#{@coupon_2.id}") do
       expect(page).to have_content(@coupon_2.name)
-      expect(page).to have_content(@coupon_2.value)
+      expect(page).to have_content(@coupon_2.display_value)
     end
 
     expect(page).to_not have_content(@coupon_6.name)
-    expect(page).to_not have_content(@coupon_6.value)
+    expect(page).to_not have_content(@coupon_6.display_value)
   end
 
   it "each coupon name is a link to that coupon's show page " do

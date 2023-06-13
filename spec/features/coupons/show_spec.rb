@@ -10,7 +10,7 @@ RSpec.describe "Coupon Show Page", type: :feature do
   it "displays the coupon's name, code, value and status" do
     expect(page).to have_content(@coupon_1.name)
     expect(page).to have_content(@coupon_1.code)
-    expect(page).to have_content(@coupon_1.value)
+    expect(page).to have_content(@coupon_1.display_value)
     expect(page).to have_content(@coupon_1.status)
 
     expect(page).to_not have_content(@coupon_2.name)
@@ -64,7 +64,6 @@ RSpec.describe "Coupon Show Page", type: :feature do
     visit merchant_coupon_path(@merchant1, @coupon_10)
     click_button("Activate")
 
-    visit merchant_coupons_path(@merchant1)
     expect(page).to have_content("You cannot have more than 5 active coupons at a time.")
   end
 end
