@@ -6,6 +6,8 @@ class HolidayService
   end
 
   def next_three_holidays
-    holidays = service.get_holidays.first(3)
+    service.get_holidays.map do |holiday_data|
+      Holiday.new(holiday_data)
+    end
   end
 end

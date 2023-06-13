@@ -67,7 +67,6 @@ RSpec.describe "Coupons Index Page", type: :feature do
 
   # User Story 9
   it "displays the name and date of the next three upcoming US holidays" do
-    save_and_open_page
     within("#holidays") do
       expect(page).to have_content("Upcoming Holidays")
       expect(page).to have_content("Juneteenth")
