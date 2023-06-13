@@ -34,5 +34,15 @@ RSpec.describe Coupon, type: :model do
         expect(@coupon_3.times_used).to eq(1)
       end
     end
+
+    describe '#display_value' do
+      it 'returns the value of the coupon in a readable format' do
+        coupon_data
+        expect(@coupon_1.display_value).to eq("50%")
+        expect(@coupon_2.display_value).to eq("100%")
+        expect(@coupon_4.display_value).to eq("$5")
+        expect(@coupon_5.display_value).to eq("$2")
+      end
+    end
   end
 end
