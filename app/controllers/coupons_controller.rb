@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   def index
     @merchant = Merchant.find(params[:merchant_id])
     holiday = HolidayService.new
-    @holidays = holiday.new_three_holidays
+    @holidays = holiday.next_three_holidays
   end
 
   def show
